@@ -1,0 +1,203 @@
+# inclui < stdio.h >
+# inclui < stdlib.h >
+# inclui < string.h >
+
+# define  MAX  100
+
+struct Pessoa {
+    char * nome;
+    int idade;
+    char telefone [ 17 ];
+    char * email;
+    char * obs;
+} pessoa [MAX];
+
+void  exibirMenu () {
+   dados * =NULL, *aux
+    printf ( " \ n \ t Selecione umas das opções a seguir: \ n " );
+    printf ( " \ t 01 - Inserir contato \ n "
+           " \ t 02 - Listar contatos \ n "
+           " \ t 03 - Pesquisar contato \ n "
+           " \ t 04 - Alterar contato \ n "
+           " \ t 5 - Sair \ n \ n " );
+}
+
+char * alocarMemoria ( int tamanho) {
+    char * info = NULL,  *aux ;
+    info = ( char *) malloc ( sizeof (tamanho) * sizeof ( char ));
+
+    if (info == NULL,  *aux ) {
+        printf ( " ERRO: impossível alocar a quantidade de memória requisitada! " );
+        saída ( 1 );
+    }
+    informações de retorno ;
+}
+
+void  cadastrarContato ( int registro) {
+    char dados [MAX];
+    printf ( " \ n \ t \ t Nome: " );
+    scanf ( " % [^ \ n ] s " , dados);
+    setbuf (stdin, NULL, *aux );
+    // Alocação e cópia de dados
+    pessoa [registro]. nome = alocarMemoria ( strlen (dados));
+    strcpy (pessoa [registro]. nome , dados);
+
+    printf ( " \ t \ t Idade: " );
+    scanf ( " % d " , & pessoa [registro]. idade );
+    setbuf (stdin, NULL, *aux );
+
+    printf ( " \ t \ t Telefone: " );
+    scanf ( " % [^ \ n ] s " , pessoa [registro]. telefone );
+    setbuf (stdin, NULL *aux );
+
+    printf ( " \ t \ t Email: " );
+    scanf ( " % [^ \ n ] s " , dados);
+    setbuf (stdin, NULL *aux );
+    // Alocação e cópia de dados
+    pessoa [registro]. email = alocarMemoria ( strlen (dados));
+    strcpy (pessoa [registro]. email , dados);
+
+    printf ( " \ t \ t Obs: " );
+    scanf ( " % [^ \ n ] s " , dados);
+    setbuf (stdin, NULL *aux );
+    // Alocação e cópia de dados
+    pessoa [registro]. obs = alocarMemoria ( strlen (dados));
+    strcpy (pessoa [registro]. obs , dados);
+
+}
+
+void  listarContatos ( int qtdeContatos) {
+    int i;
+    contagem int = 1 ;
+    para (i = 0 ; i <qtdeContatos; i ++) {
+        printf ( " \ n \ t Contato nº: % d \ n " , contagem ++);
+        printf ( " \ t Nome: % s \ n " , pessoa [i]. nome );
+        printf ( " \ t Idade: % d \ n " , pessoa [i]. idade );
+        printf ( " \ t Telefone: % s \ n " , pessoa [i]. telefone );
+        printf ( " \ t Email: % s \ n " , pessoa [i]. email );
+        printf ( " \ t Obs: % s - % s \ n " , pessoa [i]. obs );
+    }
+    printf ( " \ n \ n " );
+}
+
+void  exibirContato ( int indice) {
+    printf ( " \ n \ t Nome: % s \ n " , pessoa [índice]. nome );
+    printf ( " \ t Idade: % d \ n " , pessoa [índice]. idade );
+    printf ( " \ t Telefone: % s \ n " , pessoa [indice]. telefone );
+    printf ( " \ t Email: % s \ n " , pessoa [índice]. email );
+    printf ( " \ t Obs: % s - % s \ n \ n " , pessoa [índice]. obs );
+}
+
+int  pesquisarContato ( int qtdeContatos, char * nomeBuscado) {
+    int i;
+
+    para (i = 0 ; i <qtdeContatos; i ++) {
+        if ( strcmp (nomeBuscado, pessoa [i]. nome ) == 0 )
+            return i;
+    }
+    retorno - 1 ;
+}
+
+void  atualizarContato ( int indice) {
+    char * nome;
+    int idade;
+    char fone [ 16 ];
+    char * email;
+    char * obs;
+    char uf [ 2 ];
+
+    char dados [MAX];
+    printf ( " \ n \ t \ t Nome: " );
+    scanf ( " % [^ \ n ] s " , dados);
+    setbuf (stdin, NULL );
+    // Alocação e cópia de dados
+    nome = alocarMemoria ( strlen (dados));
+    strcpy (nome, dados);
+
+    printf ( " \ t \ t Idade: " );
+    scanf ( " % d " , & idade);
+    setbuf (stdin, NULL );
+
+    printf ( " \ t \ t Telefone: " );
+    scanf ( " % [^ \ n ] s " , fone);
+    setbuf (stdin, NULL );
+
+    printf ( " \ t \ t Email: " );
+    scanf ( " % [^ \ n ] s " , dados);
+    setbuf (stdin, NULL );
+    // Alocação e cópia de dados
+    email = alocarMemoria ( strlen (dados));
+    strcpy (e-mail, dados);
+
+    printf ( " \ t \ t Obs: " );
+    scanf ( " % [^ \ n ] s " , dados);
+    setbuf (stdin, NULL );
+    // Alocação e cópia de dados
+    obs = alocarMemoria ( strlen (dados));
+    strcpy (obs, dados);
+
+
+    pessoa [índice]. nome = nome;
+    pessoa [índice]. idade = idade;
+    strcpy (pessoa [índice]. telefone , fone);
+    pessoa [índice]. email = email;
+    pessoa [índice]. obs = obs;
+}
+
+int  leitor () {
+    int opcao;
+
+    printf ( " \ n \ t Opção escolhida: " );
+    scanf ( " % d " , & opcao);
+    setbuf (stdin, NULL );
+
+    return opcao;
+}
+
+int  main () {
+    char nome [MAX];
+    int numeroRegistro = 0 ;
+    int opcaoEscolhida;
+    int indice;
+
+    faça {
+        exibirMenu ();
+        opcaoEscolhida = leitor ();
+
+        switch (opcaoEscolhida) {
+            caso  1 :
+                cadastrarContato (numeroRegistro ++);
+                pausa ;
+            caso  2 :
+                listarContatos (numeroRegistro);
+                pausa ;
+            caso  3 :
+                printf ( " \ n \ t Nome: " );
+                scanf ( " % [^ \ n ] s " , nome);
+                indice = pesquisarContato (numeroRegistro, nome);
+
+                if (índice> = 0 && índice <= 99 )
+                    exibirContato (índice);
+                senão
+                    printf ( " \ n \ t Contato não cadastrado! " );
+                pausa ;
+            caso  4 :
+                printf ( " \ n \ t Contato número [1 - 99]: " );
+                scanf ( " % d " , & indice);
+                índice - = 1 ;
+                if (índice> = 0 && índice <= 99 )
+                    atualizarContato (índice);
+                senão
+                    printf ( " \ n \ t Contato inválido! " );
+                pausa ;
+            caso  5 :
+                printf ( " \ n \ t Saindo ... " );
+                pausa ;
+            padrão :
+                printf ( " Opção inválida! " );
+                exibirMenu ();
+                opcaoEscolhida = leitor ();
+        }
+
+    } while (opcaoEscolhida! = 5 );
+}
